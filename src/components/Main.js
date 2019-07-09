@@ -1,23 +1,14 @@
 import React from 'react'
-import styled from 'styled-components'
-import SingleArticle from "./SingleArticle";
-import ArticleList from "./ArticleList";
 import {Route} from "react-router-dom";
-
-const ArticlesListWrapper = styled.div`
-    display: flex;
-    margin: auto;
-    width: 50%;
-    flex-direction: column;
-    align-items: center;
-`;
+import ArticleList from '../components/ArticleList/container/ActicleList'
+import SingleArticle from "./SingleArticle/container/SingleArticle";
 
 const Main = () => {
   return (
-      <ArticlesListWrapper>
-          <Route path={`/`} exact component={ArticleList} />
-          <Route path={'/:id'} component={SingleArticle} />
-      </ArticlesListWrapper>
+      <>
+          <Route path={`/`} exact render={(props) => <ArticleList {...props}/>} />
+          <Route path={'/article/:id'} exact render={(props) => <SingleArticle {...props}/>} />
+      </>
   )
 };
 
